@@ -21,12 +21,21 @@ namespace Aston.Web.Controllers
             _assetProcess = assetProcess;
         }
 
-        [Route("GetAssetInfo/{barcode}")]
+        [Route("GetAssetByCode/{barcode}")]
         [HttpGet]
         public HttpResponseMessage GetAssetInfo(HttpRequestMessage request,string barcode)
         {
             HttpResponseMessage response = new HttpResponseMessage();
-            response = _assetProcess.GetAssetInfo(barcode);
+            response = _assetProcess.GetAssetByCode(barcode);
+            return response;
+        }
+
+        [Route("GetAssetByID/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetAssetByID(HttpRequestMessage request, int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = _assetProcess.GetAssetByID(id);
             return response;
         }
 

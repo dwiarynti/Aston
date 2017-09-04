@@ -17,14 +17,20 @@ namespace Aston.Web.Process
         {
             _serviceSettings = serviceSettings.Value;
         }
-        public HttpResponseMessage GetAssetInfo(string barcode)
+        public HttpResponseMessage GetAssetByCode(string barcode)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/GetAssetInfo/" + barcode;
+            string requestUri = "api/Asset/GetAssetByCode/" + barcode;
             result = REST(requestUri, RESTConstants.GET);
             return result;
         }
-
+        public HttpResponseMessage GetAssetByID(int barcode)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/Asset/GetAssetByID/" + barcode;
+            result = REST(requestUri, RESTConstants.GET);
+            return result;
+        }
         public HttpResponseMessage GetAsset()
         {
             HttpResponseMessage result = default(HttpResponseMessage);
@@ -32,8 +38,6 @@ namespace Aston.Web.Process
             result = REST(requestUri, RESTConstants.GET);
             return result;
         }
-
-
         public HttpResponseMessage CreateAsset(Asset obj)
         {
             HttpResponseMessage result = default(HttpResponseMessage);

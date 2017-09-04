@@ -15,7 +15,7 @@ namespace Aston.Business
         AstonContext _context = new AstonContext();
         AssetExtensions _asset = new AssetExtensions();
         LocationExtensions _location = new LocationExtensions();
-        public Asset GetAssetInfo (string barcode)
+        public Asset GetAssetByCode (string barcode)
         {
             Asset result = new Asset();
             result = _asset.GetAssetInfoByCode(barcode);
@@ -28,6 +28,13 @@ namespace Aston.Business
             result = _asset.GetAsset();
             return result;
 
+        }
+
+        public Asset GetAssetByID(int id)
+        {
+            Asset result = new Asset();
+            result = _asset.GetAssetInfoByID(id);
+            return result;
         }
 
         public bool CreateAsset(Asset obj)

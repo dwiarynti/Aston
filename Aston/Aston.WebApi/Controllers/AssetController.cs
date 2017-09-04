@@ -22,11 +22,22 @@ namespace Aston.WebApi.Controllers
 
 
         [HttpGet]
-        [Route("GetAssetInfo/{barcode}")]
-        public HttpResponseMessage GetAssetInfo(HttpRequestMessage request ,string barcode)
+        [Route("GetAssetByCode/{barcode}")]
+        public HttpResponseMessage GetAssetByCode(HttpRequestMessage request ,string barcode)
         {
 
-            var result = service.GetAssetInfo(barcode);
+            var result = service.GetAssetByCode(barcode);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = true, obj = result });
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetAssetByID/{id}")]
+        public HttpResponseMessage GetAssetByID(HttpRequestMessage request, int id  )
+        {
+
+            var result = service.GetAssetByID(id);
             HttpResponseMessage response = new HttpResponseMessage();
             response = request.CreateResponse(HttpStatusCode.OK, new { success = true, obj = result });
             return response;
