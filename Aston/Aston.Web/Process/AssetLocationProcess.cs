@@ -10,55 +10,54 @@ using System.Threading.Tasks;
 
 namespace Aston.Web.Process
 {
-    public class AssetProcess : ProcessComponent
+    public class AssetLocationProcess : ProcessComponent
     {
         private readonly AppSetting _serviceSettings;
-        public AssetProcess(IOptions<AppSetting> serviceSettings) : base(serviceSettings)
+        public AssetLocationProcess(IOptions<AppSetting> serviceSettings) : base(serviceSettings)
         {
             _serviceSettings = serviceSettings.Value;
         }
-        public HttpResponseMessage GetAssetByCode(string barcode)
+        public HttpResponseMessage GetAssetLocationByLocationID(int id)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/GetAssetByCode/" + barcode;
+            string requestUri = "api/AssetLocation/GetAssetLocationByLocationID/" + id;
             result = REST(requestUri, RESTConstants.GET);
             return result;
         }
-        public HttpResponseMessage GetAssetByID(int id)
+        public HttpResponseMessage GetAssetLocationByID(int id)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/GetAssetByID/" + id;
+            string requestUri = "api/AssetLocation/GetAssetLocationByID/" + id;
             result = REST(requestUri, RESTConstants.GET);
             return result;
         }
-        public HttpResponseMessage GetAsset()
+        public HttpResponseMessage GetAssetLocation()
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/GetAsset/";
+            string requestUri = "api/AssetLocation/GetAssetLocation/";
             result = REST(requestUri, RESTConstants.GET);
             return result;
         }
-        public HttpResponseMessage CreateAsset(Asset obj)
+        public HttpResponseMessage MoveAsset(AssetViewModel obj)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/CreateAsset";
+            string requestUri = "api/AssetLocation/MoveAsset";
             result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
             return result;
         }
-        public HttpResponseMessage UpdateAsset(Asset obj)
+        public HttpResponseMessage UpdateAssetLocation(AssetLocation obj)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/UpdateAsset";
+            string requestUri = "api/AssetLocation/UpdateAssetLocation";
             result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
             return result;
         }
-        public HttpResponseMessage DeleteAsset(Asset obj)
+        public HttpResponseMessage DeleteAssetLocation(AssetLocation obj)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/DeleteAsset";
+            string requestUri = "api/AssetLocation/DeleteAssetLocation";
             result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
             return result;
         }
-
     }
 }

@@ -10,13 +10,11 @@ namespace Aston.Web.Controllers
 {
     public class HomeController : Controller
     {
-        AstonContext context = new AstonContext();
-        AssetComponent assetservice = new AssetComponent();
+
        
         public IActionResult Index()
         {
-            var a = assetservice.Asset();
-            var b = a;
+           
             return View();
         }
 
