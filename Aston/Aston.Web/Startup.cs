@@ -15,6 +15,9 @@ using Aston.Web.Services;
 using Aston.Entities.DataContext;
 using Aston.Entities;
 using Aston.Web.Process;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Aston.Web
 {
@@ -103,12 +106,30 @@ namespace Aston.Web
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "")),
+            //    RequestPath = new PathString("/index")
+            //});
+            //app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "")),
+            //    RequestPath = new PathString("/index")
+            //});
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
