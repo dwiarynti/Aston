@@ -240,11 +240,14 @@
 --resource:"D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\obj\Debug\netcoreapp1.0\Aston.Webdotnet-compile.deps.json",Aston.Web.deps.json
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Program.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Startup.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Base\MediaType.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Base\ProcessComponent.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Base\RESTConstants.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Controllers\AccountController.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Controllers\AssetController.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Controllers\AssetLocationController.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Controllers\HomeController.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Controllers\LocationController.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Controllers\ManageController.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Controllers\RolesController.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Data\ApplicationDbContext.cs
@@ -268,7 +271,9 @@ D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Models\ManageViewModels\Manage
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Models\ManageViewModels\RemoveLoginViewModel.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Models\ManageViewModels\SetPasswordViewModel.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Process\AssetLocationProcess.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Process\AssetProcess.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Process\LocationProcess.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Services\IEmailSender.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Services\ISmsSender.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Web\Services\MessageServices.cs

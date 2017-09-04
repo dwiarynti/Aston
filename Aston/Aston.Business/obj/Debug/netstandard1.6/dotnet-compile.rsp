@@ -118,6 +118,9 @@
 --reference:C:\Users\Ishak\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
 --reference:D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Entities\bin\Debug\netstandard1.6\Aston.Entities.dll
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\AssetComponent.cs
-D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\Abstract\IAssetService.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\AssetLocationComponent.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\LocationComponent.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\Data\AssetExtensions.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\Data\AssetLocationExtensions.cs
+D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\Data\LocationExtensions.cs
 D:\__Escurity_Projects\_GIT\Aston\Aston\Aston.Business\Properties\AssemblyInfo.cs
