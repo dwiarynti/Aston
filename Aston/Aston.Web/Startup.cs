@@ -72,6 +72,7 @@ namespace Aston.Web
          
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
+
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<AssetProcess>();
         }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Aston.Web.Process;
+using Aston.Entities;
 
 namespace Aston.Web.Controllers
 {
@@ -20,15 +21,53 @@ namespace Aston.Web.Controllers
             _assetProcess = assetProcess;
         }
 
+        [Route("GetAssetInfo/{barcode}")]
+        [HttpGet]
+        public HttpResponseMessage GetAssetInfo(HttpRequestMessage request,string barcode)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = _assetProcess.GetAssetInfo(barcode);
+            return response;
+        }
+
         [Route("GetAsset")]
         [HttpGet]
         public HttpResponseMessage GetAsset(HttpRequestMessage request)
         {
-
             HttpResponseMessage response = new HttpResponseMessage();
-            response = _assetProcess.getAsset();
+            response = _assetProcess.GetAsset();
             return response;
+        }
 
+
+        [HttpPost]
+        [Route("CreateAsset")]
+        public HttpResponseMessage CreateAsset(HttpRequestMessage request, [FromBody] Asset obj)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            obj.CreatedBy = User.Identity.Name;
+            response = _assetProcess.CreateAsset(obj);
+            return response;
+        }
+
+        [HttpPost]
+        [Route("UpdateAsset")]
+        public HttpResponseMessage UpdateAsset(HttpRequestMessage request, [FromBody] Asset obj)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            obj.UpdatedBy = User.Identity.Name;
+            response = _assetProcess.UpdateAsset(obj);
+            return response;
+        }
+
+        [HttpPost]
+        [Route("DeleteAsset")]
+        public HttpResponseMessage DeleteAsset(HttpRequestMessage request, [FromBody] Asset obj)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            obj.DeletedBy = User.Identity.Name;
+            response = _assetProcess.DeleteAsset(obj);
+            return response;
         }
 
     }

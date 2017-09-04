@@ -23,6 +23,7 @@ namespace Aston.Web.Base
         {
             return REST(requestUri, restType, null);
         }
+        
         public  HttpResponseMessage REST(string requestUri, string restType, string postBody)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
@@ -34,7 +35,7 @@ namespace Aston.Web.Base
                     result = client.GetAsync(requestUri).Result;
                 else if (restType == "POST")
                 {
-                    result = client.PostAsync(requestUri, new StringContent(postBody, Encoding.UTF8)).Result;
+                    result = client.PostAsync(requestUri, new StringContent(postBody, Encoding.UTF8,MediaType.Json)).Result;
                 }
                 else if (restType == "DELETE")
                     result = client.DeleteAsync(requestUri).Result;

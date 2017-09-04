@@ -22,49 +22,60 @@ namespace Aston.WebApi.Controllers
 
 
         [HttpGet]
+        [Route("GetAssetInfo/{barcode}")]
+        public HttpResponseMessage GetAssetInfo(HttpRequestMessage request ,string barcode)
+        {
+
+            var result = service.GetAssetInfo(barcode);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = true, obj = result });
+            return response;
+        }
+
+        [HttpGet]
         [Route("GetAsset")]
         public HttpResponseMessage GetAsset(HttpRequestMessage request)
         {
 
-            var obj = service.Asset();
+            var result = service.GetAsset();
             HttpResponseMessage response = new HttpResponseMessage();
-            response = request.CreateResponse(HttpStatusCode.OK, new { success = true, Obj = obj });
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = true, obj = result });
             return response;
-
         }
 
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/values/5
-      
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-       
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        [Route("CreateAsset")]
+        public HttpResponseMessage CreateAsset(HttpRequestMessage request, [FromBody] Asset obj)
         {
+            var result = service.CreateAsset(obj);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = result });
+            return response;
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        [Route("UpdateAsset")]
+        public HttpResponseMessage UpdateAsset(HttpRequestMessage request, [FromBody] Asset obj)
         {
+            var result = service.UpdateAsset(obj);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = result });
+            return response;
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost]
+        [Route("DeleteAsset")]
+        public HttpResponseMessage DeleteAsset(HttpRequestMessage request, [FromBody] Asset obj)
         {
+            var result = service.DeleteAsset(obj);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = result });
+            return response;
         }
+
+
+
     }
 }

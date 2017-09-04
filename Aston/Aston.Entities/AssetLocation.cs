@@ -10,8 +10,8 @@ namespace Aston.Entities
         public int ID { get; set; }
         public int AssetID { get; set; }
         public int LocationID { get; set; }
-        public string OnTransaction { get; set; }
-        public int MovementRequestDetail { get; set; }
+        public Nullable<bool> OnTransition { get; set; }
+        public Nullable<int> MovementRequestDetailID { get; set; }
         public string CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedDate { get; set; }

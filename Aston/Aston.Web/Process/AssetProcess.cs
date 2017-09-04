@@ -17,11 +17,42 @@ namespace Aston.Web.Process
         {
             _serviceSettings = serviceSettings.Value;
         }
-        public HttpResponseMessage getAsset()
+        public HttpResponseMessage GetAssetInfo(string barcode)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/Getasset/";
+            string requestUri = "api/Asset/GetAssetInfo/" + barcode;
             result = REST(requestUri, RESTConstants.GET);
+            return result;
+        }
+
+        public HttpResponseMessage GetAsset()
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/Asset/GetAsset/";
+            result = REST(requestUri, RESTConstants.GET);
+            return result;
+        }
+
+
+        public HttpResponseMessage CreateAsset(Asset obj)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/Asset/CreateAsset";
+            result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
+            return result;
+        }
+        public HttpResponseMessage UpdateAsset(Asset obj)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/Asset/UpdateAsset";
+            result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
+            return result;
+        }
+        public HttpResponseMessage DeleteAsset(Asset obj)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/Asset/DeleteAsset";
+            result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
             return result;
         }
 
