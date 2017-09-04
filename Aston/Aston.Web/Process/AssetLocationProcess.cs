@@ -17,10 +17,45 @@ namespace Aston.Web.Process
         {
             _serviceSettings = serviceSettings.Value;
         }
+        public HttpResponseMessage GetAssetLocationByLocationID(int id)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/AssetLocation/GetAssetLocationByLocationID/" + id;
+            result = REST(requestUri, RESTConstants.GET);
+            return result;
+        }
+        public HttpResponseMessage GetAssetLocationByID(int id)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/AssetLocation/GetAssetLocationByID/" + id;
+            result = REST(requestUri, RESTConstants.GET);
+            return result;
+        }
+        public HttpResponseMessage GetAssetLocation()
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/AssetLocation/GetAssetLocation/";
+            result = REST(requestUri, RESTConstants.GET);
+            return result;
+        }
         public HttpResponseMessage MoveAsset(AssetViewModel obj)
         {
             HttpResponseMessage result = default(HttpResponseMessage);
-            string requestUri = "api/Asset/MoveAsset";
+            string requestUri = "api/AssetLocation/MoveAsset";
+            result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
+            return result;
+        }
+        public HttpResponseMessage UpdateAssetLocation(AssetLocation obj)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/AssetLocation/UpdateAssetLocation";
+            result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
+            return result;
+        }
+        public HttpResponseMessage DeleteAssetLocation(AssetLocation obj)
+        {
+            HttpResponseMessage result = default(HttpResponseMessage);
+            string requestUri = "api/AssetLocation/DeleteAssetLocation";
             result = REST(requestUri, RESTConstants.POST, JsonConvert.SerializeObject(obj));
             return result;
         }

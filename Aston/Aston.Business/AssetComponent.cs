@@ -153,55 +153,7 @@ namespace Aston.Business
             return result;
         }
 
-        public bool MoveAsset(AssetViewModel obj)
-        {
-
-            bool result;
-            IDbContextTransaction transaction = _context.Database.BeginTransaction();
-            if (obj != null)
-            {
-                try
-                {
-                    var location = _location.GetLocationInfoByCode(obj.location);
-                    if (obj.listAsset != null)
-                    {
-                        foreach (var item in obj.listAsset)
-                        {
-                            AssetLocation assetlocationobj = new AssetLocation();
-                            var date = DateTime.Now;
-                            var asset = _asset.GetAssetInfoByCode(item);
-                            assetlocationobj.AssetID = asset.ID;
-                            assetlocationobj.LocationID = location.ID;
-                            assetlocationobj.OnTransition = false;
-                            assetlocationobj.CreatedDate = date.Date.ToString("ddMMyyyy");
-                            assetlocationobj.CreatedBy = obj.CreatedBy;
-                            assetlocationobj.MovementRequestDetailID = null;
-                            _context.AssetLocation.Add(assetlocationobj);
-                            _context.SaveChanges();
-                        }
-
-
-                        transaction.Commit();
-                        result = true;
-                    }
-                    else
-                    {
-                        result = false;
-                    }
-                
-                }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    result = false;
-                }
-            }
-            else
-            {
-                result = false;
-            }
-            return result;
-        }
+     
 
       
 

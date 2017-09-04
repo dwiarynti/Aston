@@ -18,11 +18,60 @@ namespace Aston.WebApi.Controllers
     {
         public AssetLocationComponent service = new AssetLocationComponent();
 
+        [HttpGet]
+        [Route("GetAssetLocationByLocationID/{id}")]
+        public HttpResponseMessage GetAssetLocationByLocationID(HttpRequestMessage request, int id)
+        {
+            var result = service.GetAssetLocationByLocationID(id);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = true, obj = result });
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetAssetLocationByID/{id}")]
+        public HttpResponseMessage GetAssetLocationByID(HttpRequestMessage request, int id)
+        {
+            var result = service.GetAssetLocationByID(id);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = true, obj = result });
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetAssetLocation")]
+        public HttpResponseMessage GetAssetLocation(HttpRequestMessage request)
+        {
+
+            var result = service.GetAssetLocation();
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = true, obj = result });
+            return response;
+        }
+
         [HttpPost]
         [Route("MoveAsset")]
         public HttpResponseMessage MoveAsset(HttpRequestMessage request, [FromBody] AssetViewModel obj)
         {
             var result = service.MoveAsset(obj);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = result });
+            return response;
+        }
+        [HttpPost]
+        [Route("UpdateAssetLocation")]
+        public HttpResponseMessage UpdateAssetLocation(HttpRequestMessage request, [FromBody] AssetLocation obj)
+        {
+            var result = service.UpdateAssetLocation(obj);
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = request.CreateResponse(HttpStatusCode.OK, new { success = result });
+            return response;
+        }
+        [HttpPost]
+        [Route("DeleteAssetLocation")]
+        public HttpResponseMessage DeleteAssetLocation(HttpRequestMessage request, [FromBody] AssetLocation obj)
+        {
+            var result = service.DeleteAssetLocation(obj);
             HttpResponseMessage response = new HttpResponseMessage();
             response = request.CreateResponse(HttpStatusCode.OK, new { success = result });
             return response;
