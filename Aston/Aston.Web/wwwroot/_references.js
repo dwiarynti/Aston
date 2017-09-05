@@ -558,10 +558,14 @@
 /// <reference path="js/ccsasset/select2/vendor/jquery.mousewheel.js" />
 /// <reference path="js/ccsasset/select2/vendor/jquery-2.1.0.js" />
 /// <reference path="js/controllers/asset-ctrl.js" />
+/// <reference path="js/controllers/location-ctrl - copy.js" />
+/// <reference path="js/controllers/location-ctrl.js" />
 /// <reference path="js/controllers/master-ctrl.js" />
 /// <reference path="js/route.js" />
+/// <reference path="js/services/assetlocationresource.js" />
 /// <reference path="js/services/assetresource.js" />
 /// <reference path="js/services/common.services.js" />
+/// <reference path="js/services/locationresource.js" />
 /// <reference path="lib/angular/angular.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />
