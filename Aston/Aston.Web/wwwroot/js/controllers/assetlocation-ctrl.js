@@ -4,7 +4,7 @@
 
 app.controller('AssetLocationCtrl', function ($scope, assetLocationResource) {
     var assetLocationResources = new assetLocationResource();
-    $scope.test = "hahaha";
+    $scope.isValidate = true;
     $scope.assetlocationlist = [];
     $scope.assetlocation = {};
     $scope.actionstatus = "";
@@ -17,26 +17,17 @@ app.controller('AssetLocationCtrl', function ($scope, assetLocationResource) {
 
     function AssetLocationModel() {
         return {
-            ID: null,
-            Code: null,
-            Description: null,
-            No: null,
-            Name: null,
-            IsMovable: null,
-            Owner: null,
-            PurchaseDate: null,
-            PurchasePrice: null,
-            DepreciationDuration: null,
-            DisposedDate: null,
-            ManufactureDate: null,
-            CategoryCD: null,
-            StatusCD: null,
-            CreatedDate: null,
-            CreatedBy: null,
-            UpdatedDate: null,
-            UpdatedBy: null,
-            DeletedDate: null,
-            DeletedBy: null
+            ID: 0,
+            AssetID: null,
+            LocationID: null,
+            OnTransition: null,
+            //MovementRequestDetailID: null,
+            //CreatedDate: null,
+            //CreatedBy: null,
+            //UpdatedDate: null,
+            //UpdatedBy: null,
+            //DeletedDate: null,
+            //DeletedBy: null
         };
     }
 
@@ -52,15 +43,30 @@ app.controller('AssetLocationCtrl', function ($scope, assetLocationResource) {
     }
 
     $scope.create = function () {
+        $scope.isValidate = $scope.validationform();
+        if ($scope.isValidate) {
+            $scope.CreateAssetLocation();
+        }
+    }
+
+    $scope.validationform = function () {
+        var validationstatus = true;
+        var keys = Object.keys($scope.location);
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            if ($scope.location[key] == null || $scope.location[key] == '') {
+                validationstatus = false;
+                break;
+            }
+        }
+        return validationstatus;
+    }
+
+    $scope.CreateAssetLocation = function() {
         var assetLocationResources = new assetLocationResource();
-        assetLocationResources.Name = $scope.assetlocation.Name;
-        assetLocationResources.Description = $scope.assetlocation.Description;
-        assetLocationResources.IsMovable = $scope.assetlocation.IsMovable;
-        assetLocationResources.Owner = $scope.assetlocation.Owner;
-        assetLocationResources.PurchaseDate = $scope.assetlocation.PurchaseDate;
-        assetLocationResources.PurchasePrice = parseFloat($scope.assetlocation.PurchasePrice);
-        assetLocationResources.ManufactureDate = $scope.assetlocation.ManufactureDate;
-        assetLocationResources.CategoryCD = $scope.assetlocation.CategoryCD;
+        assetLocationResources.AssetID = $scope.assetlocation.AssetID;
+        assetLocationResources.LocationID = $scope.assetlocation.LocationID;
+        assetLocationResources.OnTransition = $scope.assetlocation.OnTransition;
         console.log(assetLocationResources);
         assetLocationResources.$CreateAsset(function (data) {
             $scope.assetlocationlist = data.obj;
@@ -74,15 +80,18 @@ app.controller('AssetLocationCtrl', function ($scope, assetLocationResource) {
     }
 
     $scope.update = function() {
+        $scope.isValidate = $scope.validationform();
+        if ($scope.isValidate) {
+            $scope.UpdateAssetLocation();
+        }
+    }
+
+    $scope.UpdateAssetLocation = function() {
         var assetLocationResources = new assetLocationResource();
-        assetLocationResources.Name = $scope.assetlocation.Name;
-        assetLocationResources.Description = $scope.assetlocation.Description;
-        assetLocationResources.IsMovable = $scope.assetlocation.IsMovable;
-        assetLocationResources.Owner = $scope.assetlocation.Owner;
-        assetLocationResources.PurchaseDate = $scope.assetlocation.PurchaseDate;
-        assetLocationResources.PurchasePrice = parseFloat($scope.assetlocation.PurchasePrice);
-        assetLocationResources.ManufactureDate = $scope.assetlocation.ManufactureDate;
-        assetLocationResources.CategoryCD = $scope.assetlocation.CategoryCD;
+        assetLocationResources.ID = $scope.assetlocation.ID;
+        assetLocationResources.AssetID = $scope.assetlocation.AssetID;
+        assetLocationResources.LocationID = $scope.assetlocation.LocationID;
+        assetLocationResources.OnTransition = $scope.assetlocation.OnTransition;
         assetLocationResources.$UpdateAsset(function (data) {
             $scope.assetlocationlist = data.obj;
         });
@@ -99,14 +108,10 @@ app.controller('AssetLocationCtrl', function ($scope, assetLocationResource) {
     }
     $scope.delete = function() {
         var assetLocationResources = new assetLocationResource();
-        assetLocationResources.Name = $scope.assetlocation.Name;
-        assetLocationResources.Description = $scope.assetlocation.Description;
-        assetLocationResources.IsMovable = $scope.assetlocation.IsMovable;
-        assetLocationResources.Owner = $scope.assetlocation.Owner;
-        assetLocationResources.PurchaseDate = $scope.assetlocation.PurchaseDate;
-        assetLocationResources.PurchasePrice = parseFloat($scope.assetlocation.PurchasePrice);
-        assetLocationResources.ManufactureDate = $scope.assetlocation.ManufactureDate;
-        assetLocationResources.CategoryCD = $scope.assetlocation.CategoryCD;
+        assetLocationResources.ID = $scope.assetlocation.ID;
+        assetLocationResources.AssetID = $scope.assetlocation.AssetID;
+        assetLocationResources.LocationID = $scope.assetlocation.LocationID;
+        assetLocationResources.OnTransition = $scope.assetlocation.OnTransition;
         assetLocationResources.$DeleteAssetLocation(function (data) {
             $scope.assetlocationlist = data.obj;
         });

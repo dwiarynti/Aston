@@ -4,7 +4,7 @@
 
 app.controller('LocationCtrl', function ($scope, locationResource) {
     var locationResources = new locationResource();
-    $scope.test = "hahaha";
+    $scope.isValidate = true;
     $scope.locationlist = [];
     $scope.location = {};
     $scope.actionstatus = "";
@@ -17,26 +17,20 @@ app.controller('LocationCtrl', function ($scope, locationResource) {
 
     function LocationModel() {
         return {
-            ID: null,
-            Code: null,
+            ID: 0,
+            //Code: null,
             Description: null,
-            No: null,
+            //No: null,
             Name: null,
-            IsMovable: null,
-            Owner: null,
-            PurchaseDate: null,
-            PurchasePrice: null,
-            DepreciationDuration: null,
-            DisposedDate: null,
-            ManufactureDate: null,
-            CategoryCD: null,
-            StatusCD: null,
-            CreatedDate: null,
-            CreatedBy: null,
-            UpdatedDate: null,
-            UpdatedBy: null,
-            DeletedDate: null,
-            DeletedBy: null
+            Floor: null,
+            LocationTypeCD: null,
+            //StatusCD: null,
+            //CreatedDate: null,
+            //CreatedBy: null,
+            //UpdatedDate: null,
+            //UpdatedBy: null,
+            //DeletedDate: null,
+            //DeletedBy: null
         };
     }
 
@@ -50,16 +44,34 @@ app.controller('LocationCtrl', function ($scope, locationResource) {
         $("#modal-action").modal('show');
     }
 
+
+
     $scope.create = function () {
+        $scope.isValidate = $scope.validationform();
+        if ($scope.isValidate) {
+            $scope.CreateLocation();
+        }
+    }
+
+    $scope.validationform = function () {
+        var validationstatus = true;
+        var keys = Object.keys($scope.location);
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            if ($scope.location[key] == null || $scope.location[key] == '') {
+                validationstatus = false;
+                break;
+            }
+        }
+        return validationstatus;
+    }
+
+    $scope.CreateLocation = function() {
         var locationResources = new locationResource();
         locationResources.Name = $scope.location.Name;
         locationResources.Description = $scope.location.Description;
-        locationResources.IsMovable = $scope.location.IsMovable;
-        locationResources.Owner = $scope.location.Owner;
-        locationResources.PurchaseDate = $scope.location.PurchaseDate;
-        locationResources.PurchasePrice = parseFloat($scope.location.PurchasePrice);
-        locationResources.ManufactureDate = $scope.location.ManufactureDate;
-        locationResources.CategoryCD = $scope.location.CategoryCD;
+        locationResources.Floor = $scope.location.Floor;
+        locationResources.LocationTypeCD = $scope.location.LocationTypeCD;
         console.log(locationResources);
         locationResources.$CreateLocation(function (data) {
             $scope.locationlist = data.obj;
@@ -73,15 +85,19 @@ app.controller('LocationCtrl', function ($scope, locationResource) {
     }
 
     $scope.update = function() {
+        $scope.isValidate = $scope.validationform();
+        if ($scope.isValidate) {
+            $scope.UpdateLocation();
+        }
+    }
+
+    $scope.UpdateLocation = function() {
         var locationResources = new locationResource();
+        locationResources.ID = $scope.location.ID;
         locationResources.Name = $scope.location.Name;
         locationResources.Description = $scope.location.Description;
-        locationResources.IsMovable = $scope.location.IsMovable;
-        locationResources.Owner = $scope.location.Owner;
-        locationResources.PurchaseDate = $scope.location.PurchaseDate;
-        locationResources.PurchasePrice = parseFloat($scope.location.PurchasePrice);
-        locationResources.ManufactureDate = $scope.location.ManufactureDate;
-        locationResources.CategoryCD = $scope.location.CategoryCD;
+        locationResources.Floor = $scope.location.Floor;
+        locationResources.LocationTypeCD = $scope.location.LocationTypeCD;
         locationResources.$UpdateLocation(function (data) {
             $scope.locationlist = data.obj;
         });
@@ -98,6 +114,7 @@ app.controller('LocationCtrl', function ($scope, locationResource) {
     }
     $scope.delete = function() {
         var locationResources = new locationResource();
+        locationResources.ID = $scope.location.ID;
         locationResources.Name = $scope.location.Name;
         locationResources.Description = $scope.location.Description;
         locationResources.IsMovable = $scope.location.IsMovable;
